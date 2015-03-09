@@ -4,7 +4,6 @@
 #define RANGE	100
 #define PIN0	0
 #define INITIAL_VALUE 0
-#define MIN_POWER  25
 
 int i;
 
@@ -25,22 +24,27 @@ int main()
   digitalWrite(6, HIGH);
 
 
-// to come to me, drive pin 0&5 to some power
-// to leave   me, drive pin 2&4 to some power
+// to forward (come to me), drive pin 0&5 to some power
+// to backward (leave  me), drive pin 2&4 to some power
 
 
-//  softPwmWrite(0, 100);
-//  softPwmWrite(5, 100);
-//  delay(5000);
-
-  softPwmWrite(2, 50);
-  softPwmWrite(4, 50);
+// forward
+  softPwmWrite(0, 0);
+  softPwmWrite(5, 0);
+  softPwmWrite(2, 100);
+  softPwmWrite(4, 100);
   delay(5000);
 
-  softPwmWrite(2, MIN_POWER);
-  softPwmWrite(4, MIN_POWER);
+// backward
+  softPwmWrite(0, 100);
+  softPwmWrite(5, 100);
+  softPwmWrite(2, 0);
+  softPwmWrite(4, 0);
   delay(5000);
 
+// stop
+  softPwmWrite(0, 0);
+  softPwmWrite(5, 0);
   softPwmWrite(2, 0);
   softPwmWrite(4, 0);
   delay(1000);
